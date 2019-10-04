@@ -41,13 +41,9 @@ const MORSE_TABLE = {
 
 function decode(expr) {
 
-    var reg = RegExp(/\d{10}|\*{10}/g);
+    var box = String(expr.match(RegExp(/\d{10}|\*{10}/g)));
 
-    var box = String(expr.match(reg));
-
-    var elev = box.replace(/11/g, '-');
-    var ten = elev.replace(/10/g, '.');
-    var zero = ten.replace(/0/g, '');
+    var zero = box.replace(/11/g, '-').replace(/10/g, '.').replace(/0/g, '');
 
     var MORSE = zero.replace(/([.-]+[-.]*)/g, (x) =>MORSE_TABLE [x]);
     var comma = String(MORSE.replace(/,/g, ''));
