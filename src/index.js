@@ -45,14 +45,14 @@ function decode(expr) {
 
     var box = String(expr.match(reg));
 
-    var ch = box.replace(/11/g, '-');
-    var next = ch.replace(/10/g, '.');
-    var zero = next.replace(/0/g, '');
+    var elev = box.replace(/11/g, '-');
+    var ten = elev.replace(/10/g, '.');
+    var zero = ten.replace(/0/g, '');
 
-    var MORSE = zero.replace(/([.-]+[-.]*)/g, (_, x) =>MORSE_TABLE [x]);
-    var spl = String(MORSE.replace(/,/g, ''));
+    var MORSE = zero.replace(/([.-]+[-.]*)/g, (x) =>MORSE_TABLE [x]);
+    var comma = String(MORSE.replace(/,/g, ''));
 
-    var result = spl.replace(/\*{10}/g, ' ');
+    var result = comma.replace(/\*{10}/g, ' ');
    
     return result;
 
